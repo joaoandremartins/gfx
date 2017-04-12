@@ -38,4 +38,14 @@ public class Match {
    * The final transactioned amount as part of this trade.
    */
   private float amount;
+
+  public Match(Order buyOrder, Order sellOrder, float fxRateBuyToSell, Boolean buyerResponse,
+               Boolean sellerResponse, float amount) {
+    this.buyOrder = buyOrder;
+    this.sellOrder = sellOrder;
+    this.fxRateBuyToSell = fxRateBuyToSell;
+    this.buyerResponse = buyerResponse;
+    this.sellerResponse = sellerResponse;
+    this.amount = amount;
+  }
 }
