@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="gfx">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Google Foreign Exchange</title>
+    <link href="css/angular-bootstrap.css" rel="stylesheet" />
+    <style type="text/css">
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display: none !important;
+        }
+    </style>
+    <script src="js/angular-bootstrap.js" type="text/javascript"></script>
+    <script src="js/index.js"></script>
+</head>
+<body>
+<div>
+    <a href="">Log in/out</a>
+    <a href="">Add Venmo/Google Wallet account.</a>
+    <a href="">My orders</a>
+</div>
+<div>
+
+</div>
+<div>
+    I want to buy <input type="text"/>
+    <select>
+        <option>SGD</option>
+        <option>USG</option>
+        <option>AUD</option>
+        <option>EUR</option>
+        <option>MXN</option>
+    </select>
+    for
+    <input type="text" />
+    <select>
+        <option>SGD</option>
+        <option>USG</option>
+        <option>AUD</option>
+        <option>EUR</option>
+        <option>MXN</option>
+    </select>
+    <button>Use current exchange rate</button>
+    in the
+    <select>
+        <option>My office</option>
+        <option>Zurich</option>
+        <option>Singapore</option>
+    </select>
+    office
+    <button>Submit!</button>
+    <br/>
+    I want to sell <input type="text"/>
+    <select>
+        <option>SGD</option>
+        <option>USG</option>
+        <option>AUD</option>
+        <option>EUR</option>
+        <option>MXN</option>
+    </select>
+    for
+    <input type="text" />
+    <select>
+        <option>SGD</option>
+        <option>USG</option>
+        <option>AUD</option>
+        <option>EUR</option>
+        <option>MXN</option>
+    </select>
+    <button>Use current exchange rate</button>
+    in the
+    <select>
+        <option>My office</option>
+        <option>Zurich</option>
+        <option>Singapore</option>
+    </select>
+    office
+    <button>Submit!</button>
+    <br/>
+    I'm looking for <input type="text"/>
+    <select>
+        <option>SGD</option>
+        <option>USG</option>
+        <option>AUD</option>
+        <option>EUR</option>
+        <option>MXN</option>
+    </select>
+    in the
+    <select>
+        <option>My office</option>
+        <option>Zurich</option>
+        <option>Singapore</option>
+    </select>
+    office
+    <button>Filter</button>
+    <h1>Sellers</h1>
+    <table>
+        <tr>
+            <td>Seller</td>
+            <td>Amount selling</td>
+            <td>Currency selling</td>
+            <td>Amount buying</td>
+            <td>Currency buying</td>
+            <td>Exchange rate</td>
+            <td>Office</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Ederson</td>
+            <td>20</td>
+            <td>SGD</td>
+            <td>40</td>
+            <td>USD</td>
+            <td>1.54345</td>
+            <td>New York</td>
+            <td><button>Buy all!</button></td>
+            <td><button>Buy part!</button></td>
+        </tr>
+        <tr>
+            <td>Mitroglou</td>
+            <td>40</td>
+            <td>MXN</td>
+            <td>80</td>
+            <td>USD</td>
+            <td>234.234</td>
+            <td>Sydney</td>
+            <td><button>Buy all!</button></td>
+            <td><button>Buy part!</button></td>
+        </tr>
+    </table>
+
+    <h1>Buyers</h1>
+    <table>
+        <tr>
+            <td>Buyer</td>
+            <td>Amount buying</td>
+            <td>Currency buying</td>
+            <td>Amount selling</td>
+            <td>Currency selling</td>
+            <td>Exchange rate</td>
+            <td>Office</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Fejsa</td>
+            <td>20</td>
+            <td>SGD</td>
+            <td>40</td>
+            <td>USD</td>
+            <td>1.54345</td>
+            <td>Dublin</td>
+            <td><button>Sell all!</button></td>
+            <td><button>Sell part!</button></td>
+        </tr>
+        <tr>
+            <td>Nelson Semedo</td>
+            <td>40</td>
+            <td>MXN</td>
+            <td>80</td>
+            <td>USD</td>
+            <td>234.234</td>
+            <td>Zurich</td>
+            <td><button>Sell all!</button></td>
+            <td><button>Sell part!</button></td>
+        </tr>
+    </table>
+</div>
+
+<div ng-controller="home" ng-cloak class="ng-cloak">
+    <table>
+        <tr ng-repeat="order in orders">
+            <td>{{order.id}}</td>
+            <td>{{order.type}}</td>
+            <td>{{order.amount}}</td>
+            <td>{{order.currency}}</td>
+            <td>{{order.targetCurrency}}</td>
+            <td>{{order.status}}</td>
+            <td>{{order.createdTime}}</td>
+            <td>{{order.user}}</td>
+            <td>{{order.acceptFractional}}</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
