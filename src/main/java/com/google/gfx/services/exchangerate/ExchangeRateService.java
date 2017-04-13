@@ -1,5 +1,6 @@
 package com.google.gfx.services.exchangerate;
 
+import java.math.BigDecimal;
 import java.util.Currency;
 
 /**
@@ -19,5 +20,5 @@ public interface ExchangeRateService {
    * @param toCurrency gotten currency
    * @return the exchange rate value, such that 'itself * fromCurrency = toCurrency'
    */
-  float getExchangeRate(Currency fromCurrency, Currency toCurrency);
+  BigDecimal getExchangeRate(Currency fromCurrency, Currency toCurrency);
 }

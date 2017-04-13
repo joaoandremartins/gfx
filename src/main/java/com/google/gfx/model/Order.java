@@ -1,5 +1,6 @@
 package com.google.gfx.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Currency;
 
@@ -21,17 +22,17 @@ public class Order {
   /**
    * Amount of currency for exchange.
    */
-  private float amount;
+  private BigDecimal amount;
 
   /**
    * Currency being bought or sold.
    */
-  private Currency currency;
+  private Currency fromCurrency;
 
   /**
    * Currency being sought.
    */
-  private Currency targetCurrency;
+  private Currency toCurrency;
 
   /**
    * Order status: open or closed.
@@ -53,13 +54,13 @@ public class Order {
    */
   private boolean acceptFractional;
 
-  public Order(long id, Type type, float amount, Currency currency, Currency targetCurrency,
+  public Order(long id, Type type, BigDecimal amount, Currency fromCurrency, Currency toCurrency,
                Status status, LocalDateTime createdTime, User user, boolean acceptFractional) {
     this.id = id;
     this.type = type;
     this.amount = amount;
-    this.currency = currency;
-    this.targetCurrency = targetCurrency;
+    this.fromCurrency = fromCurrency;
+    this.toCurrency = toCurrency;
     this.status = status;
     this.createdTime = createdTime;
     this.user = user;

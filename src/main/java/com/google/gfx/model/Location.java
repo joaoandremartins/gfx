@@ -3,27 +3,19 @@ package com.google.gfx.model;
 /**
  * Used to localise users.
  */
-public enum Location {
-  NEW_YORK("New York"),
-  MOUNTAIN_VIEW("Mountain View"),
-  SAN_FRANCISCO("San Francisco"),
-  SEATTLE("Seattle"),
-  KIRKLAND("Kirkland"),
-  LOS_ANGELES("Los Angeles"),
-  BOULDER("Boulder"),
-  CAMBRIDGE("Cambridge"),
-  WATERLOO("Waterloo"),
-  LISBON("Lisbon"),
-  DUBLIN("Dublin"),
-  LONDON("London"),
-  MUNICH("Munich"),
-  ZURICH("Zurich"),
-  SYDNEY("Sydney"),
-  SINGAPORE("Singapore");
+public class Location {
 
   private String name;
 
-  Location(String name) {
+  public Location(String name) {
+    this.name = name;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
     this.name = name;
   }
 }

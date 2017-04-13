@@ -3,8 +3,9 @@ package com.google.gfx.services.order;
 import com.google.gfx.model.Order;
 import com.google.gfx.model.User;
 
-import java.util.Collection;
+import java.math.BigDecimal;
 import java.util.Currency;
+import java.util.List;
 
 /**
  * Manages the orders in the system.
@@ -32,19 +33,19 @@ public interface OrderService {
    * Lists all existing orders.
    */
   // TODO(joaomartins): Implement pagination.
-  Collection<Order> listAllOrders();
+  List<Order> listAllOrders();
 
   // TODO(joaomartins): Implement pagination.
-  Collection<Order> listAllSellOrders();
+  List<Order> listAllSellOrders();
 
   // TODO(joaomartins): Implement pagination.
-  Collection<Order> listAllBuyOrders();
+  List<Order> listAllBuyOrders();
 
   // TODO(joaomartins): Implement pagination.
-  Collection<Order> listSellOrdersForUser(User user);
+  List<Order> listSellOrdersForUser(User user);
 
   // TODO(joaomartins): Implement pagination.
-  Collection<Order> listBuyOrdersForUser(User user);
+  List<Order> listBuyOrdersForUser(User user);
 
   /**
    * Lists a number of buy orders by their amount.
@@ -62,7 +63,7 @@ public interface OrderService {
    * {@code currency}
    */
   // TODO(joaomartins): Implement pagination.
-  Collection<Order> listBuyOrdersByAmount(float amount, Currency currency, int numOrders);
+  List<Order> listBuyOrdersByAmount(BigDecimal amount, Currency currency, int numOrders);
 
   /**
    * Lists a number of sell orders by their amount.
@@ -81,5 +82,5 @@ public interface OrderService {
    * {@code currency}
    */
   // TODO(joaomartins): Implement pagination.
-  Collection<Order> listSellOrdersLowerByAmount(float amount, Currency currency, int numOrders);
+  List<Order> listSellOrdersLowerByAmount(BigDecimal amount, Currency currency, int numOrders);
 }

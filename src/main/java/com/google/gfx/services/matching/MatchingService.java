@@ -3,6 +3,8 @@ package com.google.gfx.services.matching;
 import com.google.gfx.model.Match;
 import com.google.gfx.model.Order;
 
+import java.math.BigDecimal;
+
 /**
  * Matches existing orders with other existing or new ones.
  */
@@ -20,7 +22,7 @@ public interface MatchingService {
    * @param order original posted order
    * @param amount amount of the match, which might fully or partially match the original order
    */
-  void matchOrder(Order order, float amount);
+  void matchOrder(Order order, BigDecimal amount);
 
   /**
    * Accepts a proposed match.
