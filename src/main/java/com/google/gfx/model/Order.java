@@ -30,7 +30,7 @@ public class Order {
   private Currency fromCurrency;
 
   /**
-   * Currency being sought.
+   * Currency being traded for.
    */
   private Currency toCurrency;
 
@@ -65,6 +65,125 @@ public class Order {
     this.createdTime = createdTime;
     this.user = user;
     this.acceptFractional = acceptFractional;
+  }
+
+  public void close() {
+    status = Status.CLOSED;
+  }
+
+  public long getId() {
+    return id;
+  }
+
+  public Type getType() {
+    return type;
+  }
+
+  public BigDecimal getAmount() {
+    return amount;
+  }
+
+  public Currency getFromCurrency() {
+    return fromCurrency;
+  }
+
+  public Currency getToCurrency() {
+    return toCurrency;
+  }
+
+  public Status getStatus() {
+    return status;
+  }
+
+  public LocalDateTime getCreatedTime() {
+    return createdTime;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public boolean isAcceptFractional() {
+    return acceptFractional;
+  }
+
+  public static class Builder {
+    private long id;
+    private Type type;
+    private BigDecimal amount;
+    private Currency fromCurrency;
+    private Currency toCurrency;
+    private Status status = Status.OPEN;
+    private LocalDateTime createdTime;
+    private User user;
+    private boolean acceptFractional;
+
+    private Builder() {}
+
+    public Builder id(long id) {
+      this.id = id;
+      return this;
+    }
+
+    public Builder type(Type type) {
+      this.type = type;
+      return this;
+    }
+
+    public Builder amount(BigDecimal amount) {
+      this.amount = amount;
+      return this;
+    }
+
+    public Builder fromCurrency(Currency fromCurrency) {
+      this.fromCurrency = fromCurrency;
+      return this;
+    }
+
+    public Builder toCurrency(Currency toCurrency) {
+      this.toCurrency = toCurrency;
+      return this;
+    }
+
+    public Builder status(Status status) {
+      this.status = status;
+      return this;
+    }
+
+    public Builder user(User user) {
+      this.user = user;
+      return this;
+    }
+
+    public Builder acceptFractional(boolean acceptFractional) {
+      this.acceptFractional = acceptFractional;
+      return this;
+    }
+
+    public Order build() {
+      if (type == null) {
+        throw new IllegalArgumentException("An order type must be provided.");
+      }
+      if (amount == null) {
+        throw new IllegalArgumentException("An amount must be provided.");
+      }
+      if (fromCurrency == null) {
+        throw new IllegalArgumentException("A buy or sell currency must be provided.");
+      }
+      if (toCurrency == null) {
+        throw new IllegalArgumentException("A target currency must be provided");
+      }
+      if (user == null) {
+        throw new IllegalArgumentException("A user must be provided.");
+      }
+      createdTime = LocalDateTime.now();
+      return new Order(id, type, amount, fromCurrency, toCurrency, status, createdTime, user,
+          acceptFractional);
+    }
+  }
+
+  public static Builder newBuilder() {
+    return new Builder();
   }
 
   public enum Type {
