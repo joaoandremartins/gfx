@@ -13,4 +13,16 @@
     <packaging>jar</packaging>
 
     <name>gfx-order</name>
+
+    <dependencies>
+        <!-- JDBC stuff -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+    </dependencies>
 </project>
