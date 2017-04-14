@@ -19,7 +19,7 @@
     </parent>
 
     <modules>
-        <module>web</module>
-        <module>discovery</module>
+        <module>model</module>
+        <module>services</module>
     </modules>
 </project>
