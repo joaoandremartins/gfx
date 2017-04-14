@@ -31,7 +31,6 @@
         <option>MXN</option>
     </select>
     for
-    <input type="text" />
     <select>
         <option>SGD</option>
         <option>USG</option>
@@ -39,14 +38,12 @@
         <option>EUR</option>
         <option>MXN</option>
     </select>
-    <button>Use current exchange rate</button>
-    in the
+    in
     <select>
         <option>My office</option>
         <option>Zurich</option>
         <option>Singapore</option>
     </select>
-    office
     <button>Submit!</button>
     <br/>
     I want to sell <input type="text"/>
@@ -58,7 +55,6 @@
         <option>MXN</option>
     </select>
     for
-    <input type="text" />
     <select>
         <option>SGD</option>
         <option>USG</option>
@@ -66,14 +62,12 @@
         <option>EUR</option>
         <option>MXN</option>
     </select>
-    <button>Use current exchange rate</button>
-    in the
+    in
     <select>
         <option>My office</option>
         <option>Zurich</option>
         <option>Singapore</option>
     </select>
-    office
     <button>Submit!</button>
     <br/>
     I'm looking for <input type="text"/>
@@ -92,95 +86,74 @@
     </select>
     office
     <button>Filter</button>
-    <h1>Sellers</h1>
-    <table>
-        <tr>
-            <td>Seller</td>
-            <td>Amount selling</td>
-            <td>Currency selling</td>
-            <td>Amount buying</td>
-            <td>Currency buying</td>
-            <td>Exchange rate</td>
-            <td>Office</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Ederson</td>
-            <td>20</td>
-            <td>SGD</td>
-            <td>40</td>
-            <td>USD</td>
-            <td>1.54345</td>
-            <td>New York</td>
-            <td><button>Buy all!</button></td>
-            <td><button>Buy part!</button></td>
-        </tr>
-        <tr>
-            <td>Mitroglou</td>
-            <td>40</td>
-            <td>MXN</td>
-            <td>80</td>
-            <td>USD</td>
-            <td>234.234</td>
-            <td>Sydney</td>
-            <td><button>Buy all!</button></td>
-            <td><button>Buy part!</button></td>
-        </tr>
-    </table>
 
-    <h1>Buyers</h1>
-    <table>
-        <tr>
-            <td>Buyer</td>
-            <td>Amount buying</td>
-            <td>Currency buying</td>
-            <td>Amount selling</td>
-            <td>Currency selling</td>
-            <td>Exchange rate</td>
-            <td>Office</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Fejsa</td>
-            <td>20</td>
-            <td>SGD</td>
-            <td>40</td>
-            <td>USD</td>
-            <td>1.54345</td>
-            <td>Dublin</td>
-            <td><button>Sell all!</button></td>
-            <td><button>Sell part!</button></td>
-        </tr>
-        <tr>
-            <td>Nelson Semedo</td>
-            <td>40</td>
-            <td>MXN</td>
-            <td>80</td>
-            <td>USD</td>
-            <td>234.234</td>
-            <td>Zurich</td>
-            <td><button>Sell all!</button></td>
-            <td><button>Sell part!</button></td>
-        </tr>
-    </table>
-</div>
+    <div ng-controller="listSellOrders" ng-cloak class="ng-cloak">
+        <h1>Sellers</h1>
+        <table border="1">
+            <tr>
+                <td>ID</td>
+                <td>Amount selling</td>
+                <td>Currency selling</td>
+                <td>Currency buying</td>
+                <td>Status</td>
+                <td>Exchange rate</td>
+                <td>Location</td>
+                <td>Seller</td>
+                <td>Accepts fractions</td>
+                <td>Created at</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr ng-repeat="order in orders">
+                <td>{{order.id}}</td>
+                <td>{{order.amount}}</td>
+                <td>{{order.fromCurrency}}</td>
+                <td>{{order.toCurrency}}</td>
+                <td>{{order.status}}</td>
+                <td>fx</td>
+                <td>{{order.user.location.name}}</td>
+                <td>{{order.user.email}} ({{order.user.name}})</td>
+                <td>{{order.acceptFractional}}</td>
+                <td>{{order.createdTime|date : 'medium'}}</td>
+                <td><button>Buy all!</button></td>
+                <td><button>Buy part!</button></td>
+            </tr>
+        </table>
+    </div>
 
-<div ng-controller="home" ng-cloak class="ng-cloak">
-    <table>
-        <tr ng-repeat="order in orders">
-            <td>{{order.id}}</td>
-            <td>{{order.type}}</td>
-            <td>{{order.amount}}</td>
-            <td>{{order.currency}}</td>
-            <td>{{order.targetCurrency}}</td>
-            <td>{{order.status}}</td>
-            <td>{{order.createdTime}}</td>
-            <td>{{order.user}}</td>
-            <td>{{order.acceptFractional}}</td>
-        </tr>
-    </table>
+    <div ng-controller="listBuyOrders">
+        <h1>Buyers</h1>
+        <table border="1">
+            <tr>
+                <td>ID</td>
+                <td>Amount buying</td>
+                <td>Currency buying</td>
+                <td>Currency selling</td>
+                <td>Status</td>
+                <td>Exchange rate</td>
+                <td>Location</td>
+                <td>Buyer</td>
+                <td>Accepts fractions</td>
+                <td>Created at</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr ng-repeat="order in orders">
+                <td>{{order.id}}</td>
+                <td>{{order.amount}}</td>
+                <td>{{order.fromCurrency}}</td>
+                <td>{{order.toCurrency}}</td>
+                <td>{{order.status}}</td>
+                <td>fx</td>
+                <td>{{order.user.location.name}}</td>
+                <td>{{order.user.email}} ({{order.user.name}})</td>
+                <td>{{order.acceptFractional}}</td>
+                <td>{{order.createdTime|date : 'medium'}}</td>
+                <td><button>Sell all!</button></td>
+                <td><button>Sell part!</button></td>
+            </tr>
+        </table>
+    </div>
 </div>
 </body>
 </html>
