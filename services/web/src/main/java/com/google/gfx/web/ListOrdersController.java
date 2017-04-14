@@ -1,8 +1,8 @@
-package com.google.gfx;
+package com.google.gfx.web;
 
-import com.google.gfx.model.Location;
-import com.google.gfx.model.Order;
-import com.google.gfx.model.User;
+import com.google.gfx.Location;
+import com.google.gfx.Order;
+import com.google.gfx.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
