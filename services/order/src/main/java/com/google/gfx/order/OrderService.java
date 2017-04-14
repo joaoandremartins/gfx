@@ -1,7 +1,7 @@
 package com.google.gfx.order;
 
-import com.google.gfx.model.Order;
-import com.google.gfx.model.User;
+import com.google.gfx.Order;
+import com.google.gfx.User;
 
 import java.math.BigDecimal;
 import java.util.Currency;
