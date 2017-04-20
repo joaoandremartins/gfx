@@ -1,12 +1,12 @@
 package com.google.gfx;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Currency;
@@ -14,11 +14,15 @@ import java.util.Currency;
 /**
  * A currency exchange order request to either buy or sell currency.
  */
+@Entity
+@Table(name = "ExchangeOrder")
 public class Order {
 
   /**
    * Order unique identification.
    */
+  @Id
+  @GeneratedValue
   private long id;
 
   /**
@@ -51,19 +55,22 @@ public class Order {
    */
   @JsonSerialize(using = LocalDateTimeSerializer.class)
   @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-  @JsonFormat(pattern = "dd/MM/yyyy hh:mm")
+//  @JsonFormat(pattern = "dd/MM/yyyy hh:mm")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private LocalDateTime createdTime;
 
   /**
    * User who filed the request.
    */
+  @ManyToOne
   private User user;
 
   /**
    * Whether the user accepts the order to be fulfilled by multiple matches or only a single one.
    */
   private boolean acceptFractional;
+
+  public Order() {}
 
   public Order(long id, Type type, BigDecimal amount, Currency fromCurrency, Currency toCurrency,
                Status status, LocalDateTime createdTime, User user, boolean acceptFractional) {
@@ -116,6 +123,42 @@ public class Order {
 
   public boolean isAcceptFractional() {
     return acceptFractional;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public void setType(Type type) {
+    this.type = type;
+  }
+
+  public void setAmount(BigDecimal amount) {
+    this.amount = amount;
+  }
+
+  public void setFromCurrency(Currency fromCurrency) {
+    this.fromCurrency = fromCurrency;
+  }
+
+  public void setToCurrency(Currency toCurrency) {
+    this.toCurrency = toCurrency;
+  }
+
+  public void setStatus(Status status) {
+    this.status = status;
+  }
+
+  public void setCreatedTime(LocalDateTime createdTime) {
+    this.createdTime = createdTime;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  public void setAcceptFractional(boolean acceptFractional) {
+    this.acceptFractional = acceptFractional;
   }
 
   public static class Builder {

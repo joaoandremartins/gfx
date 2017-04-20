@@ -13,79 +13,64 @@
     <script src="js/index.js"></script>
 </head>
 <body>
-<div>
+<div id="header">
     <a href="">Log in/out</a>
     <a href="">Add Venmo/Google Wallet account.</a>
     <a href="">My orders</a>
 </div>
-<div>
 
-</div>
 <div>
-    I want to buy <input type="text"/>
-    <select>
-        <option>SGD</option>
-        <option>USG</option>
-        <option>AUD</option>
-        <option>EUR</option>
-        <option>MXN</option>
-    </select>
-    for
-    <select>
-        <option>SGD</option>
-        <option>USG</option>
-        <option>AUD</option>
-        <option>EUR</option>
-        <option>MXN</option>
-    </select>
-    in
-    <select>
-        <option>My office</option>
-        <option>Zurich</option>
-        <option>Singapore</option>
-    </select>
-    <button>Submit!</button>
-    <br/>
-    I want to sell <input type="text"/>
-    <select>
-        <option>SGD</option>
-        <option>USG</option>
-        <option>AUD</option>
-        <option>EUR</option>
-        <option>MXN</option>
-    </select>
-    for
-    <select>
-        <option>SGD</option>
-        <option>USG</option>
-        <option>AUD</option>
-        <option>EUR</option>
-        <option>MXN</option>
-    </select>
-    in
-    <select>
-        <option>My office</option>
-        <option>Zurich</option>
-        <option>Singapore</option>
-    </select>
-    <button>Submit!</button>
-    <br/>
-    I'm looking for <input type="text"/>
-    <select>
-        <option>SGD</option>
-        <option>USG</option>
-        <option>AUD</option>
-        <option>EUR</option>
-        <option>MXN</option>
-    </select>
-    in the
-    <select>
-        <option>My office</option>
-        <option>Zurich</option>
-        <option>Singapore</option>
-    </select>
-    office
-    <button>Filter</button>
+    <div id="addOrderDiv">
+        <form action="/addOrder" method="post">
+            I want to
+            <select name="type">
+                <option>buy</option>
+                <option>sell</option>
+            </select>
+            <input type="number" name="amount"/>
+            <select name="fromCurrency">
+                <option>SGD</option>
+                <option>USG</option>
+                <option>AUD</option>
+                <option>EUR</option>
+                <option>MXN</option>
+            </select>
+            for
+            <select name="toCurrency">
+                <option>SGD</option>
+                <option>USG</option>
+                <option>AUD</option>
+                <option>EUR</option>
+                <option>MXN</option>
+            </select>
+            in
+            <select name="location">
+                <option>My office</option>
+                <option>Zurich</option>
+                <option>Singapore</option>
+            </select>
+            Accept fractional <input type="checkbox" name="acceptsFractional" />
+            <input type="submit" value="Submit!" />
+        </form>
+    </div>
+    <div>
+        I'm looking for <input type="text"/>
+        <select>
+            <option>SGD</option>
+            <option>USG</option>
+            <option>AUD</option>
+            <option>EUR</option>
+            <option>MXN</option>
+        </select>
+        in the
+        <select>
+            <option>My office</option>
+            <option>Zurich</option>
+            <option>Singapore</option>
+        </select>
+        office
+        <button>Filter</button>
+    </div>
 
     <div ng-controller="listSellOrders" ng-cloak class="ng-cloak">
         <h1>Sellers</h1>
