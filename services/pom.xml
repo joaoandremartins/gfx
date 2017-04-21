@@ -20,12 +20,4 @@
         <module>order</module>
         <module>web</module>
     </modules>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.google.gfx</groupId>
-            <artifactId>model</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
 </project>
